@@ -1,1 +1,41 @@
+import java.util.*;
+
+public class Question8 {
+    public int[] findErrorNums(int[] nums) {
+        int n = nums.length;
+        int[] result = new int[2];
+        
+        // Find the duplicate number
+        Set<Integer> set = new HashSet<>();
+        for (int num : nums) {
+            if (set.contains(num)) {
+                result[0] = num;
+            } else {
+                set.add(num);
+            }
+        }
+        
+        // Find the missing number
+        for (int i = 1; i <= n; i++) {
+            if (!set.contains(i)) {
+                result[1] = i;
+                break;
+            }
+        }
+        
+        return result;
+    }
+    
+    public static void main(String[] args) {
+        int[] nums = {1, 2, 2, 4};
+        
+        Question8 solution = new Question8();
+        int[] result = solution.findErrorNums(nums);
+        
+        System.out.println("Result: ");
+        for (int num : result) {
+            System.out.print(num + " ");
+        }
+    }
+}
 
