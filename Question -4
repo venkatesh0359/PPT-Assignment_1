@@ -1,1 +1,39 @@
+public class Question4  {
+    public int[] plusOne(int[] digits) {
+        int n = digits.length;
+        
+        // Start from the rightmost digit
+        for (int i = n - 1; i >= 0; i--) {
+            // Increment the digit by one
+            digits[i]++;
+            
+            // If the digit becomes 10, set it to 0 and carry over
+            if (digits[i] == 10) {
+                digits[i] = 0;
+            } else {
+                // No carry over, so we can return the digits
+                return digits;
+            }
+        }
+        
+        // If all digits are 9 and carry over still exists
+        // Create a new array with length n + 1 and set the first digit to 1
+        int[] result = new int[n + 1];
+        result[0] = 1;
+        
+        return result;
+    }
+    
+    public static void main(String[] args) {
+        int[] digits = {1, 2, 3};
+        
+        Question4 solution = new Question4();
+        int[] result = solution.plusOne(digits);
+        
+        System.out.print("Result: ");
+        for (int digit : result) {
+            System.out.print(digit + " ");
+        }
+    }
+}
 
